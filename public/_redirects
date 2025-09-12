@@ -1,1 +1,4 @@
-/*    /index.html   200
+# SPA fallback - more specific rules first
+/api/* /api/:splat 200
+/assets/* /assets/:splat 200
+/* /index.html 200
