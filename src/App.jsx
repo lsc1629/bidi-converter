@@ -183,22 +183,22 @@ function App() {
               </div>
               <div>
                 <h4 className="text-md font-medium text-gray-900 mb-4">
-                  {t('home.popularConversions')}
+                  {t('home.popularConversions.title')}
                 </h4>
                 <ul className="space-y-2 text-gray-600">
                   <li>
                     <button onClick={() => setActiveTab('converter')} className="hover:text-blue-600">
-                      {t('home.pngToWebp')}
+                      {t('home.popularConversions.pngToWebp')}
                     </button>
                   </li>
                   <li>
                     <button onClick={() => setActiveTab('converter')} className="hover:text-blue-600">
-                      {t('home.jpgToPng')}
+                      {t('home.popularConversions.jpgToPng')}
                     </button>
                   </li>
                   <li>
                     <button onClick={() => setActiveTab('viewer')} className="hover:text-blue-600">
-                      {t('home.pdfViewer')}
+                      {t('home.popularConversions.pdfViewer')}
                     </button>
                   </li>
                 </ul>
