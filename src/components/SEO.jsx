@@ -1,92 +1,31 @@
 import { useEffect } from 'react';
-import { useTranslation } from '../hooks/useTranslation';
-import { useLanguage } from '../hooks/useLanguage';
 
 const SEO = ({ page = 'home' }) => {
-  const { t, language } = useTranslation();
-  const { changeLanguage } = useLanguage();
-
-  const seoData = {
-    title: t(`seo.${page}.title`),
-    description: t(`seo.${page}.description`),
-    keywords: t(`seo.${page}.keywords`)
-  };
-
-  const baseUrl = 'https://bidiconverter.com';
-  const currentUrl = `${baseUrl}${page === 'home' ? '' : `/${page === 'converter' ? 'image-converter' : 'document-viewer'}`}`;
-  
-  // Generate alternate URLs for hreflang
-  const alternateUrls = {
-    es: `${currentUrl}?lang=es`,
-    en: `${currentUrl}?lang=en`
-  };
-
   useEffect(() => {
-    // Update document title
-    document.title = seoData.title;
-    
-    // Update meta tags
-    const updateMetaTag = (name, content, attribute = 'name') => {
-      let meta = document.querySelector(`meta[${attribute}="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute(attribute, name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
+    // Update document title based on page
+    const titles = {
+      home: 'Bidi Converter - Convertir Imágenes y Visualizar Documentos Online Gratis',
+      converter: 'Convertir Imágenes Online Gratis - PNG, JPG, WebP, GIF | Bidi Converter',
+      viewer: 'Visualizar Documentos Online - PDF, Word, Excel | Bidi Converter'
     };
-
-    // Basic SEO meta tags
-    updateMetaTag('description', seoData.description);
-    updateMetaTag('keywords', seoData.keywords);
-    updateMetaTag('robots', 'index, follow');
-    updateMetaTag('author', 'Bidi Converter');
-    updateMetaTag('language', language);
     
-    // Open Graph meta tags
-    updateMetaTag('og:title', seoData.title, 'property');
-    updateMetaTag('og:description', seoData.description, 'property');
-    updateMetaTag('og:url', alternateUrls[language], 'property');
-    updateMetaTag('og:type', 'website', 'property');
-    updateMetaTag('og:locale', language === 'es' ? 'es_ES' : 'en_US', 'property');
-    updateMetaTag('og:site_name', 'Bidi Converter', 'property');
+    document.title = titles[page] || titles.home;
     
-    // Twitter Card meta tags
-    updateMetaTag('twitter:card', 'summary_large_image');
-    updateMetaTag('twitter:title', seoData.title);
-    updateMetaTag('twitter:description', seoData.description);
+    // Update meta description
+    const descriptions = {
+      home: 'Herramienta gratuita para convertir imágenes (PNG, JPG, WebP, GIF) y visualizar documentos (PDF, Word, Excel) online. Rápido, seguro y sin registro.',
+      converter: 'Convierte imágenes entre formatos PNG, JPG, WebP, GIF y BMP de forma gratuita. Procesamiento rápido y seguro en tu navegador.',
+      viewer: 'Visualiza documentos PDF, Word (DOCX) y Excel (XLSX) directamente en tu navegador. Herramienta gratuita y segura.'
+    };
     
-    // Remove existing hreflang and canonical links
-    document.querySelectorAll('link[rel="alternate"], link[rel="canonical"]').forEach(link => {
-      link.remove();
-    });
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', descriptions[page] || descriptions.home);
+    }
     
-    // Add canonical link
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = alternateUrls[language];
-    document.head.appendChild(canonical);
-    
-    // Add hreflang links
-    Object.entries(alternateUrls).forEach(([lang, url]) => {
-      const hreflang = document.createElement('link');
-      hreflang.rel = 'alternate';
-      hreflang.hreflang = lang;
-      hreflang.href = url;
-      document.head.appendChild(hreflang);
-    });
-    
-    // Add x-default hreflang (English as default)
-    const xDefault = document.createElement('link');
-    xDefault.rel = 'alternate';
-    xDefault.hreflang = 'x-default';
-    xDefault.href = alternateUrls.en;
-    document.head.appendChild(xDefault);
-    
-    // Update document language
-    document.documentElement.lang = language;
-    
-  }, [seoData, language, alternateUrls]);
+    // Update document lang
+    document.documentElement.lang = 'es';
+  }, [page]);
 
   return null;
 };
