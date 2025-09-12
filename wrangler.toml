@@ -1,0 +1,39 @@
+name = "bidi-converter"
+compatibility_date = "2024-01-15"
+
+[env.production]
+name = "bidi-converter"
+route = { pattern = "bidiconverter.com/*", zone_name = "bidiconverter.com" }
+
+[env.preview]
+name = "bidi-converter-preview"
+
+# Build configuration
+[build]
+command = "npm run build"
+publish = "dist"
+
+# Environment variables (opcional)
+[vars]
+ENVIRONMENT = "production"
+
+# Headers para optimización
+[[headers]]
+for = "/*"
+[headers.values]
+"X-Frame-Options" = "DENY"
+"X-Content-Type-Options" = "nosniff"
+"Referrer-Policy" = "strict-origin-when-cross-origin"
+"Permissions-Policy" = "camera=(), microphone=(), geolocation=()"
+
+# Cache para assets estáticos
+[[headers]]
+for = "/assets/*"
+[headers.values]
+"Cache-Control" = "public, max-age=31536000, immutable"
+
+# Redirects para SPA
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
