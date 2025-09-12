@@ -1,93 +1,94 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../hooks/useLanguage';
 
-const SEO = ({ 
-  title, 
-  description, 
-  keywords, 
-  image, 
-  url, 
-  type = 'website',
-  noindex = false 
-}) => {
+const SEO = ({ page = 'home' }) => {
+  const { t, language } = useTranslation();
+  const { changeLanguage } = useLanguage();
+
+  const seoData = {
+    title: t(`seo.${page}.title`),
+    description: t(`seo.${page}.description`),
+    keywords: t(`seo.${page}.keywords`)
+  };
+
+  const baseUrl = 'https://bidiconverter.com';
+  const currentUrl = `${baseUrl}${page === 'home' ? '' : `/${page === 'converter' ? 'image-converter' : 'document-viewer'}`}`;
+  
+  // Generate alternate URLs for hreflang
+  const alternateUrls = {
+    es: `${currentUrl}?lang=es`,
+    en: `${currentUrl}?lang=en`
+  };
+
   useEffect(() => {
     // Update document title
-    if (title) {
-      document.title = `${title} | Bidi Converter`
-    }
-
-    // Update meta description
-    if (description) {
-      updateMetaTag('name', 'description', description)
-    }
-
-    // Update keywords
-    if (keywords) {
-      updateMetaTag('name', 'keywords', keywords)
-    }
-
-    // Update Open Graph tags
-    if (title) {
-      updateMetaTag('property', 'og:title', title)
-    }
-    if (description) {
-      updateMetaTag('property', 'og:description', description)
-    }
-    if (image) {
-      updateMetaTag('property', 'og:image', image)
-    }
-    if (url) {
-      updateMetaTag('property', 'og:url', url)
-    }
-    if (type) {
-      updateMetaTag('property', 'og:type', type)
-    }
-
-    // Update Twitter Card tags
-    if (title) {
-      updateMetaTag('property', 'twitter:title', title)
-    }
-    if (description) {
-      updateMetaTag('property', 'twitter:description', description)
-    }
-    if (image) {
-      updateMetaTag('property', 'twitter:image', image)
-    }
-
-    // Update robots meta tag
-    const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow'
-    updateMetaTag('name', 'robots', robotsContent)
-
-    // Update canonical URL
-    if (url) {
-      updateCanonicalUrl(url)
-    }
-  }, [title, description, keywords, image, url, type, noindex])
-
-  const updateMetaTag = (attribute, attributeValue, content) => {
-    let element = document.querySelector(`meta[${attribute}="${attributeValue}"]`)
+    document.title = seoData.title;
     
-    if (!element) {
-      element = document.createElement('meta')
-      element.setAttribute(attribute, attributeValue)
-      document.head.appendChild(element)
-    }
-    
-    element.setAttribute('content', content)
-  }
+    // Update meta tags
+    const updateMetaTag = (name, content, attribute = 'name') => {
+      let meta = document.querySelector(`meta[${attribute}="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attribute, name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
 
-  const updateCanonicalUrl = (url) => {
-    let canonical = document.querySelector('link[rel="canonical"]')
+    // Basic SEO meta tags
+    updateMetaTag('description', seoData.description);
+    updateMetaTag('keywords', seoData.keywords);
+    updateMetaTag('robots', 'index, follow');
+    updateMetaTag('author', 'Bidi Converter');
+    updateMetaTag('language', language);
     
-    if (!canonical) {
-      canonical = document.createElement('link')
-      canonical.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonical)
-    }
+    // Open Graph meta tags
+    updateMetaTag('og:title', seoData.title, 'property');
+    updateMetaTag('og:description', seoData.description, 'property');
+    updateMetaTag('og:url', alternateUrls[language], 'property');
+    updateMetaTag('og:type', 'website', 'property');
+    updateMetaTag('og:locale', language === 'es' ? 'es_ES' : 'en_US', 'property');
+    updateMetaTag('og:site_name', 'Bidi Converter', 'property');
     
-    canonical.setAttribute('href', url)
-  }
+    // Twitter Card meta tags
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', seoData.title);
+    updateMetaTag('twitter:description', seoData.description);
+    
+    // Remove existing hreflang and canonical links
+    document.querySelectorAll('link[rel="alternate"], link[rel="canonical"]').forEach(link => {
+      link.remove();
+    });
+    
+    // Add canonical link
+    const canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    canonical.href = alternateUrls[language];
+    document.head.appendChild(canonical);
+    
+    // Add hreflang links
+    Object.entries(alternateUrls).forEach(([lang, url]) => {
+      const hreflang = document.createElement('link');
+      hreflang.rel = 'alternate';
+      hreflang.hreflang = lang;
+      hreflang.href = url;
+      document.head.appendChild(hreflang);
+    });
+    
+    // Add x-default hreflang (English as default)
+    const xDefault = document.createElement('link');
+    xDefault.rel = 'alternate';
+    xDefault.hreflang = 'x-default';
+    xDefault.href = alternateUrls.en;
+    document.head.appendChild(xDefault);
+    
+    // Update document language
+    document.documentElement.lang = language;
+    
+  }, [seoData, language, alternateUrls]);
 
-  return null // This component doesn't render anything
-}
+  return null;
+};
 
-export default SEO
+export default SEO;

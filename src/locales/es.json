@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "converter": "Convertir",
+    "viewer": "Visualizar",
+    "language": "Idioma"
+  },
+  "home": {
+    "hero": {
+      "title": "Convierte y Visualiza",
+      "subtitle": "Archivos Online",
+      "description": "Herramienta gratuita para convertir imágenes y visualizar documentos. Rápido, seguro y sin necesidad de registro.",
+      "convertButton": "Convertir Imágenes",
+      "viewButton": "Ver Documentos"
+    },
+    "popularConversions": {
+      "title": "Conversiones Más Populares",
+      "description": "Accede directamente a las conversiones más utilizadas por nuestros usuarios",
+      "popularLabel": "Popular",
+      "convertNow": "Convertir ahora",
+      "pngToWebp": "Reduce el tamaño manteniendo calidad",
+      "jpgToPng": "Convierte a formato con transparencia",
+      "gifToWebp": "Optimiza animaciones para web",
+      "webpToJpg": "Compatible con todos los navegadores"
+    },
+    "features": {
+      "title": "¿Por qué elegir Bidi Converter?",
+      "description": "La herramienta más completa para todas tus necesidades de conversión y visualización",
+      "fast": {
+        "title": "Súper Rápido",
+        "description": "Conversiones instantáneas procesadas directamente en tu navegador"
+      },
+      "secure": {
+        "title": "100% Seguro",
+        "description": "Tus archivos nunca salen de tu dispositivo. Privacidad garantizada"
+      },
+      "crossPlatform": {
+        "title": "Multiplataforma",
+        "description": "Funciona perfectamente en móviles, tablets y computadoras"
+      }
+    },
+    "formats": {
+      "title": "Formatos Soportados",
+      "images": {
+        "title": "Imágenes",
+        "input": "Entrada",
+        "output": "Salida"
+      },
+      "documents": {
+        "title": "Documentos",
+        "viewing": "Visualización"
+      }
+    }
+  },
+  "converter": {
+    "title": "Convertir Imágenes",
+    "description": "Convierte tus imágenes entre diferentes formatos de manera rápida y segura"
+  },
+  "viewer": {
+    "title": "Visualizar Documentos",
+    "description": "Visualiza documentos PDF, Word y Excel directamente en tu navegador"
+  },
+  "seo": {
+    "home": {
+      "title": "Bidi Converter - Convertir Imágenes y Visualizar Documentos Online Gratis",
+      "description": "Herramienta gratuita para convertir imágenes (PNG, JPG, WebP, GIF) y visualizar documentos (PDF, Word, Excel) online. Rápido, seguro y sin registro. Procesamiento local en tu navegador.",
+      "keywords": "convertir imágenes online, convertir PNG a WebP, convertir JPG a PNG, visualizar PDF online, convertir imágenes gratis, herramienta conversión imágenes, convertidor online gratuito"
+    },
+    "converter": {
+      "title": "Convertir Imágenes Online Gratis - PNG, JPG, WebP, GIF | Bidi Converter",
+      "description": "Convierte imágenes entre formatos PNG, JPG, WebP, GIF y BMP de forma gratuita. Procesamiento rápido y seguro en tu navegador sin subir archivos a servidores.",
+      "keywords": "convertir PNG a WebP, convertir JPG a PNG, convertir GIF a WebP, convertir imágenes online, convertidor imágenes gratuito"
+    },
+    "viewer": {
+      "title": "Visualizar Documentos Online - PDF, Word, Excel | Bidi Converter",
+      "description": "Visualiza documentos PDF, Word (DOCX) y Excel (XLSX) directamente en tu navegador. Herramienta gratuita y segura para abrir documentos sin software adicional.",
+      "keywords": "visualizar PDF online, abrir Word online, ver Excel online, visualizador documentos gratuito, abrir DOCX online"
+    }
+  }
+}

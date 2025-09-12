@@ -1,33 +1,26 @@
 import React, { useState } from 'react'
-import { Upload, FileImage, FileText, Download, Menu, X, ArrowRight, Zap, Shield, Smartphone } from 'lucide-react'
+import { Upload, FileImage, FileText, Download, Menu, X, ArrowRight, Zap, Shield, Smartphone, Globe } from 'lucide-react'
 import mammoth from 'mammoth'
 import * as XLSX from 'xlsx'
 import SEO from './components/SEO'
+import { useLanguage } from './hooks/useLanguage'
+import { useTranslation } from './hooks/useTranslation'
 
 // Main App Component
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { language, changeLanguage } = useLanguage()
+  const { t } = useTranslation()
 
   return (
     <>
-      <SEO 
-        title={activeTab === 'home' ? "Convertidor de Imágenes y Documentos Online Gratis | Bidi Converter" : 
-               activeTab === 'converter' ? "Convertidor de Imágenes Online - JPG, PNG, WebP, GIF" :
-               "Visor de Documentos Online - PDF, Word, Excel"}
-        description={activeTab === 'home' ? "Convierte imágenes y visualiza documentos online gratis. PNG a WebP, JPG a PNG, visor PDF, Word y Excel. Rápido, seguro y sin registro." :
-                    activeTab === 'converter' ? "Convierte imágenes entre JPG, PNG, GIF, WebP de forma gratuita. Herramienta online rápida y segura sin registro." :
-                    "Visualiza documentos Word, Excel y PDF directamente en tu navegador. Visor online gratuito y seguro."}
-        keywords={activeTab === 'home' ? "convertidor imágenes, PNG a WebP, JPG a PNG, visor PDF, convertir imágenes gratis, herramientas online" :
-                  activeTab === 'converter' ? "convertidor imágenes, JPG a PNG, PNG a WebP, GIF converter, convertir imágenes online" :
-                  "visor PDF, Word online, Excel viewer, documentos online, PDF viewer"}
-        url={`https://bidiconverter.com/${activeTab === 'home' ? '' : activeTab === 'converter' ? 'convertidor-imagenes' : 'visor-documentos'}`}
-      />
+      <SEO page={activeTab} />
       
       <div className="min-h-screen bg-gray-50">
         {/* Header with structured navigation */}
         <header className="bg-white shadow-sm border-b border-gray-200">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Navegación principal">
+          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label={t('nav.home')}>
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
                 <h1 className="text-2xl font-bold text-blue-600">
@@ -38,7 +31,7 @@ function App() {
               </div>
               
               {/* Desktop Navigation */}
-              <div className="hidden md:flex space-x-8">
+              <div className="hidden md:flex items-center space-x-8">
                 <button
                   onClick={() => setActiveTab('home')}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -48,7 +41,7 @@ function App() {
                   }`}
                   aria-pressed={activeTab === 'home'}
                 >
-                  Inicio
+                  {t('nav.home')}
                 </button>
                 <button
                   onClick={() => setActiveTab('converter')}
@@ -59,8 +52,7 @@ function App() {
                   }`}
                   aria-pressed={activeTab === 'converter'}
                 >
-                  <FileImage className="inline-block w-4 h-4 mr-2" />
-                  Convertidor
+                  {t('nav.imageConverter')}
                 </button>
                 <button
                   onClick={() => setActiveTab('viewer')}
@@ -71,18 +63,29 @@ function App() {
                   }`}
                   aria-pressed={activeTab === 'viewer'}
                 >
-                  <FileText className="inline-block w-4 h-4 mr-2" />
-                  Visor
+                  {t('nav.documentViewer')}
                 </button>
+                
+                {/* Language Selector */}
+                <div className="relative">
+                  <button
+                    onClick={() => changeLanguage(language === 'es' ? 'en' : 'es')}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                    aria-label={t('nav.language')}
+                  >
+                    <Globe className="h-4 w-4" />
+                    <span className="uppercase">{language}</span>
+                  </button>
+                </div>
               </div>
 
               {/* Mobile menu button */}
               <div className="md:hidden">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
+                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
                   aria-expanded={isMenuOpen}
-                  aria-label="Abrir menú de navegación"
+                  aria-label="Abrir menú principal"
                 >
                   {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </button>
@@ -91,48 +94,46 @@ function App() {
 
             {/* Mobile Navigation */}
             {isMenuOpen && (
-              <div className="md:hidden border-t border-gray-200 pt-4 pb-3">
-                <div className="space-y-1">
+              <div className="md:hidden">
+                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
                   <button
-                    onClick={() => {
-                      setActiveTab('home')
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => { setActiveTab('home'); setIsMenuOpen(false); }}
                     className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                       activeTab === 'home'
                         ? 'bg-blue-100 text-blue-700'
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    Inicio
+                    {t('nav.home')}
                   </button>
                   <button
-                    onClick={() => {
-                      setActiveTab('converter')
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => { setActiveTab('converter'); setIsMenuOpen(false); }}
                     className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                       activeTab === 'converter'
                         ? 'bg-blue-100 text-blue-700'
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    <FileImage className="inline-block w-4 h-4 mr-2" />
-                    Convertidor
+                    {t('nav.imageConverter')}
                   </button>
                   <button
-                    onClick={() => {
-                      setActiveTab('viewer')
-                      setIsMenuOpen(false)
-                    }}
+                    onClick={() => { setActiveTab('viewer'); setIsMenuOpen(false); }}
                     className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                       activeTab === 'viewer'
                         ? 'bg-blue-100 text-blue-700'
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    <FileText className="inline-block w-4 h-4 mr-2" />
-                    Visor
+                    {t('nav.documentViewer')}
+                  </button>
+                  
+                  {/* Mobile Language Selector */}
+                  <button
+                    onClick={() => { changeLanguage(language === 'es' ? 'en' : 'es'); setIsMenuOpen(false); }}
+                    className="flex items-center space-x-2 w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                  >
+                    <Globe className="h-4 w-4" />
+                    <span>{t('nav.language')} ({language.toUpperCase()})</span>
                   </button>
                 </div>
               </div>
@@ -140,79 +141,94 @@ function App() {
           </nav>
         </header>
 
-        {/* Breadcrumbs - Only show when not on home */}
-        {activeTab !== 'home' && (
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm text-gray-500">
-              <li>
-                <button onClick={() => setActiveTab('home')} className="hover:text-gray-700">Inicio</button>
-              </li>
-              <li className="flex items-center">
-                <span className="mx-2">/</span>
-                <span className="text-gray-900">
-                  {activeTab === 'converter' ? 'Convertidor de Imágenes' : 'Visor de Documentos'}
-                </span>
-              </li>
-            </ol>
-          </nav>
-        )}
+        {/* Breadcrumbs */}
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2 text-sm text-gray-500">
+            <li>
+              <button onClick={() => setActiveTab('home')} className="hover:text-gray-700">
+                {t('nav.home')}
+              </button>
+            </li>
+            {activeTab !== 'home' && (
+              <>
+                <li>
+                  <ArrowRight className="h-4 w-4" />
+                </li>
+                <li className="text-gray-900 font-medium">
+                  {activeTab === 'converter' ? t('nav.imageConverter') : t('nav.documentViewer')}
+                </li>
+              </>
+            )}
+          </ol>
+        </nav>
 
         {/* Main Content */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
-          {activeTab === 'home' && (
-            <HomePage setActiveTab={setActiveTab} />
-          )}
-          {activeTab === 'converter' && (
-            <section aria-labelledby="converter-heading">
-              <ImageConverter />
-            </section>
-          )}
-          {activeTab === 'viewer' && (
-            <section aria-labelledby="viewer-heading">
-              <DocumentViewer />
-            </section>
-          )}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          {activeTab === 'home' && <HomePage setActiveTab={setActiveTab} />}
+          {activeTab === 'converter' && <ImageConverter />}
+          {activeTab === 'viewer' && <DocumentViewer />}
         </main>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-gray-200 mt-16">
+        <footer className="bg-white border-t border-gray-200 mt-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Bidi Converter</h3>
-                <p className="text-gray-600 text-sm">
-                  Herramienta gratuita para convertir imágenes y visualizar documentos online de forma segura y rápida.
+                <p className="text-gray-600">
+                  {language === 'es' 
+                    ? 'Herramienta gratuita para convertir imágenes y visualizar documentos online.'
+                    : 'Free tool to convert images and view documents online.'}
                 </p>
               </div>
               <div>
-                <h4 className="text-md font-medium text-gray-900 mb-4">Conversiones Populares</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li><button onClick={() => setActiveTab('converter')} className="hover:text-gray-900">PNG a WebP</button></li>
-                  <li><button onClick={() => setActiveTab('converter')} className="hover:text-gray-900">JPG a PNG</button></li>
-                  <li><button onClick={() => setActiveTab('converter')} className="hover:text-gray-900">GIF a WebP</button></li>
-                  <li><button onClick={() => setActiveTab('converter')} className="hover:text-gray-900">WebP a JPG</button></li>
+                <h4 className="text-md font-medium text-gray-900 mb-4">
+                  {t('home.popularConversions')}
+                </h4>
+                <ul className="space-y-2 text-gray-600">
+                  <li>
+                    <button onClick={() => setActiveTab('converter')} className="hover:text-blue-600">
+                      {t('home.pngToWebp')}
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={() => setActiveTab('converter')} className="hover:text-blue-600">
+                      {t('home.jpgToPng')}
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={() => setActiveTab('viewer')} className="hover:text-blue-600">
+                      {t('home.pdfViewer')}
+                    </button>
+                  </li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-md font-medium text-gray-900 mb-4">Herramientas</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li><button onClick={() => setActiveTab('converter')} className="hover:text-gray-900">Convertidor de Imágenes</button></li>
-                  <li><button onClick={() => setActiveTab('viewer')} className="hover:text-gray-900">Visor de Documentos</button></li>
-                  <li><button onClick={() => setActiveTab('viewer')} className="hover:text-gray-900">Visor PDF Online</button></li>
-                  <li><button onClick={() => setActiveTab('viewer')} className="hover:text-gray-900">Visor Word Online</button></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-md font-medium text-gray-900 mb-4">Información</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li><a href="#" className="hover:text-gray-900">Política de Privacidad</a></li>
-                  <li><a href="#" className="hover:text-gray-900">Términos de Uso</a></li>
-                  <li><a href="#" className="hover:text-gray-900">Contacto</a></li>
-                </ul>
+                <h4 className="text-md font-medium text-gray-900 mb-4">
+                  {t('nav.language')}
+                </h4>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={() => changeLanguage('es')}
+                    className={`px-3 py-1 rounded ${
+                      language === 'es' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                  >
+                    Español
+                  </button>
+                  <button
+                    onClick={() => changeLanguage('en')}
+                    className={`px-3 py-1 rounded ${
+                      language === 'en' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                  >
+                    English
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">
-              <p>&copy; 2024 Bidi Converter. Todos los derechos reservados.</p>
+            <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500">
+              <p>&copy; 2024 Bidi Converter. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
             </div>
           </div>
         </footer>
@@ -223,11 +239,33 @@ function App() {
 
 // Home Page Component
 function HomePage({ setActiveTab }) {
+  const { t } = useTranslation()
+  
   const popularConversions = [
-    { from: 'PNG', to: 'WebP', description: 'Reduce el tamaño manteniendo calidad', popular: true },
-    { from: 'JPG', to: 'PNG', description: 'Convierte a formato con transparencia', popular: true },
-    { from: 'GIF', to: 'WebP', description: 'Optimiza animaciones para web', popular: false },
-    { from: 'WebP', to: 'JPG', description: 'Compatible con todos los navegadores', popular: false },
+    { 
+      from: 'PNG', 
+      to: 'WebP', 
+      description: t('home.popularConversions.pngToWebp'), 
+      popular: true 
+    },
+    { 
+      from: 'JPG', 
+      to: 'PNG', 
+      description: t('home.popularConversions.jpgToPng'), 
+      popular: true 
+    },
+    { 
+      from: 'GIF', 
+      to: 'WebP', 
+      description: t('home.popularConversions.gifToWebp'), 
+      popular: false 
+    },
+    { 
+      from: 'WebP', 
+      to: 'JPG', 
+      description: t('home.popularConversions.webpToJpg'), 
+      popular: false 
+    },
   ]
 
   return (
@@ -236,12 +274,11 @@ function HomePage({ setActiveTab }) {
       <section className="text-center py-12 lg:py-20">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Convierte y Visualiza
-            <span className="text-blue-600 block">Archivos Online</span>
+            {t('home.hero.title')}
+            <span className="text-blue-600 block">{t('home.hero.subtitle')}</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Herramienta gratuita para convertir imágenes y visualizar documentos. 
-            Rápido, seguro y sin necesidad de registro.
+            {t('home.hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -249,7 +286,7 @@ function HomePage({ setActiveTab }) {
               className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
             >
               <FileImage className="w-5 h-5 mr-2" />
-              Convertir Imágenes
+              {t('home.hero.convertButton')}
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
             <button
@@ -257,7 +294,7 @@ function HomePage({ setActiveTab }) {
               className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center"
             >
               <FileText className="w-5 h-5 mr-2" />
-              Ver Documentos
+              {t('home.hero.viewButton')}
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
           </div>
@@ -267,9 +304,9 @@ function HomePage({ setActiveTab }) {
       {/* Popular Conversions */}
       <section className="py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Conversiones Más Populares</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('home.popularConversions.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Accede directamente a las conversiones más utilizadas por nuestros usuarios
+            {t('home.popularConversions.description')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -284,7 +321,7 @@ function HomePage({ setActiveTab }) {
               {conversion.popular && (
                 <div className="flex items-center mb-3">
                   <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded-full font-medium">
-                    Popular
+                    {t('home.popularConversions.popularLabel')}
                   </span>
                 </div>
               )}
@@ -294,7 +331,7 @@ function HomePage({ setActiveTab }) {
                 </div>
                 <p className="text-sm text-gray-600 mb-4">{conversion.description}</p>
                 <div className="flex items-center justify-center text-blue-600 font-medium">
-                  Convertir ahora
+                  {t('home.popularConversions.convertNow')}
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </div>
               </div>
@@ -306,9 +343,9 @@ function HomePage({ setActiveTab }) {
       {/* Features Section */}
       <section className="py-12 bg-white rounded-2xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">¿Por qué elegir Bidi Converter?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('home.features.title')}</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            La herramienta más completa para todas tus necesidades de conversión y visualización
+            {t('home.features.description')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -316,27 +353,27 @@ function HomePage({ setActiveTab }) {
             <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Zap className="w-8 h-8 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Súper Rápido</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('home.features.fast.title')}</h3>
             <p className="text-gray-600">
-              Conversiones instantáneas procesadas directamente en tu navegador
+              {t('home.features.fast.description')}
             </p>
           </div>
           <div className="text-center">
             <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Shield className="w-8 h-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">100% Seguro</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('home.features.secure.title')}</h3>
             <p className="text-gray-600">
-              Tus archivos nunca salen de tu dispositivo. Privacidad garantizada
+              {t('home.features.secure.description')}
             </p>
           </div>
           <div className="text-center">
             <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Smartphone className="w-8 h-8 text-purple-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Multiplataforma</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('home.features.crossPlatform.title')}</h3>
             <p className="text-gray-600">
-              Funciona perfectamente en móviles, tablets y computadoras
+              {t('home.features.crossPlatform.description')}
             </p>
           </div>
         </div>
@@ -345,17 +382,17 @@ function HomePage({ setActiveTab }) {
       {/* Supported Formats */}
       <section className="py-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Formatos Soportados</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('home.formats.title')}</h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
             <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
               <FileImage className="w-6 h-6 mr-2 text-blue-600" />
-              Imágenes
+              {t('home.formats.images.title')}
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Entrada:</h4>
+                <h4 className="font-medium text-gray-700">{t('home.formats.images.input')}:</h4>
                 <div className="flex flex-wrap gap-2">
                   {['JPG', 'PNG', 'GIF', 'WebP', 'BMP'].map(format => (
                     <span key={format} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -365,7 +402,7 @@ function HomePage({ setActiveTab }) {
                 </div>
               </div>
               <div className="space-y-2">
-                <h4 className="font-medium text-gray-700">Salida:</h4>
+                <h4 className="font-medium text-gray-700">{t('home.formats.images.output')}:</h4>
                 <div className="flex flex-wrap gap-2">
                   {['JPG', 'PNG', 'WebP', 'GIF'].map(format => (
                     <span key={format} className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -379,11 +416,11 @@ function HomePage({ setActiveTab }) {
           <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
             <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
               <FileText className="w-6 h-6 mr-2 text-green-600" />
-              Documentos
+              {t('home.formats.documents.title')}
             </h3>
             <div className="space-y-4">
               <div>
-                <h4 className="font-medium text-gray-700 mb-2">Visualización:</h4>
+                <h4 className="font-medium text-gray-700 mb-2">{t('home.formats.documents.viewing')}:</h4>
                 <div className="flex flex-wrap gap-2">
                   {['PDF', 'Word (DOCX)', 'Excel (XLSX)'].map(format => (
                     <span key={format} className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
