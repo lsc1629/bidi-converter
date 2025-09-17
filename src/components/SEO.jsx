@@ -1,21 +1,26 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../hooks/useLanguage';
+import { useTranslation } from '../hooks/useTranslation';
 
 const SEO = ({ page = 'home' }) => {
+  const { language } = useLanguage();
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Update document title based on page
     const titles = {
-      home: 'Bidi Converter - Convertir Imágenes y Visualizar Documentos Online Gratis',
-      converter: 'Convertir Imágenes Online Gratis - PNG, JPG, WebP, GIF | Bidi Converter',
-      viewer: 'Visualizar Documentos Online - PDF, Word, Excel | Bidi Converter'
+      home: t('seo.home.title'),
+      converter: t('seo.converter.title'),
+      viewer: t('seo.viewer.title')
     };
     
     document.title = titles[page] || titles.home;
     
     // Update meta description
     const descriptions = {
-      home: 'Herramienta gratuita para convertir imágenes (PNG, JPG, WebP, GIF) y visualizar documentos (PDF, Word, Excel) online. Rápido, seguro y sin registro.',
-      converter: 'Convierte imágenes entre formatos PNG, JPG, WebP, GIF y BMP de forma gratuita. Procesamiento rápido y seguro en tu navegador.',
-      viewer: 'Visualiza documentos PDF, Word (DOCX) y Excel (XLSX) directamente en tu navegador. Herramienta gratuita y segura.'
+      home: t('seo.home.description'),
+      converter: t('seo.converter.description'),
+      viewer: t('seo.viewer.description')
     };
     
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -24,8 +29,8 @@ const SEO = ({ page = 'home' }) => {
     }
     
     // Update document lang
-    document.documentElement.lang = 'es';
-  }, [page]);
+    document.documentElement.lang = language;
+  }, [page, language, t]);
 
   return null;
 };

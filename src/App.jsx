@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Upload, FileImage, FileText, Download, Menu, X, ArrowRight, Zap, Shield, Smartphone, Globe } from 'lucide-react'
+import { Upload, FileImage, FileText, Download, Menu, X, ArrowRight, Zap, Shield, Smartphone } from 'lucide-react'
 import mammoth from 'mammoth'
 import * as XLSX from 'xlsx'
 import SEO from './components/SEO'
@@ -10,7 +10,7 @@ import { useTranslation } from './hooks/useTranslation'
 function App() {
   const [activeTab, setActiveTab] = useState('home')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { language, changeLanguage } = useLanguage()
+  const { language } = useLanguage()
   const { t } = useTranslation()
 
   return (
@@ -24,7 +24,7 @@ function App() {
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
                 <h1 className="text-2xl font-bold text-blue-600">
-                  <button onClick={() => setActiveTab('home')} aria-label="Bidi Converter - Inicio">
+                  <button onClick={() => setActiveTab('home')} aria-label={t('aria.appHome')}>
                     Bidi Converter
                   </button>
                 </h1>
@@ -56,7 +56,7 @@ function App() {
                 </button>
                 <button
                   onClick={() => setActiveTab('viewer')}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`hidden md:block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeTab === 'viewer'
                       ? 'bg-blue-100 text-blue-700'
                       : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
@@ -65,18 +65,6 @@ function App() {
                 >
                   {t('nav.documentViewer')}
                 </button>
-                
-                {/* Language Selector */}
-                <div className="relative">
-                  <button
-                    onClick={() => changeLanguage(language === 'es' ? 'en' : 'es')}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-                    aria-label={t('nav.language')}
-                  >
-                    <Globe className="h-4 w-4" />
-                    <span className="uppercase">{language}</span>
-                  </button>
-                </div>
               </div>
 
               {/* Mobile menu button */}
@@ -84,7 +72,7 @@ function App() {
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
-                  aria-label="Abrir menú"
+                  aria-label={t('aria.openMenu')}
                 >
                   {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </button>
@@ -103,7 +91,7 @@ function App() {
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    Inicio
+                    {t('nav.home')}
                   </button>
                   <button
                     onClick={() => { setActiveTab('converter'); setIsMenuOpen(false); }}
@@ -113,7 +101,7 @@ function App() {
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    Convertir Imágenes
+                    {t('nav.imageConverter')}
                   </button>
                   <button
                     onClick={() => { setActiveTab('viewer'); setIsMenuOpen(false); }}
@@ -123,7 +111,7 @@ function App() {
                         : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    Ver Documentos
+                    {t('nav.documentViewer')}
                   </button>
                 </div>
               </div>
@@ -132,7 +120,7 @@ function App() {
         </header>
 
         {/* Breadcrumbs */}
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label="Breadcrumb">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" aria-label={t('aria.breadcrumb')}>
           <ol className="flex items-center space-x-2 text-sm text-gray-500">
             <li>
               <button onClick={() => setActiveTab('home')} className="hover:text-gray-700">
@@ -166,9 +154,7 @@ function App() {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Bidi Converter</h3>
                 <p className="text-gray-600">
-                  {language === 'es' 
-                    ? 'Herramienta gratuita para convertir imágenes y visualizar documentos online.'
-                    : 'Free tool to convert images and view documents online.'}
+                  {t('footer.description')}
                 </p>
               </div>
               <div>
@@ -193,32 +179,9 @@ function App() {
                   </li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-md font-medium text-gray-900 mb-4">
-                  {t('nav.language')}
-                </h4>
-                <div className="flex space-x-4">
-                  <button
-                    onClick={() => changeLanguage('es')}
-                    className={`px-3 py-1 rounded ${
-                      language === 'es' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'
-                    }`}
-                  >
-                    Español
-                  </button>
-                  <button
-                    onClick={() => changeLanguage('en')}
-                    className={`px-3 py-1 rounded ${
-                      language === 'en' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'
-                    }`}
-                  >
-                    English
-                  </button>
-                </div>
-              </div>
             </div>
             <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-500">
-              <p>&copy; 2024 Bidi Converter. {language === 'es' ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+              <p>&copy; 2024 Bidi Converter. {t('footer.copyright')}</p>
             </div>
           </div>
         </footer>
@@ -433,6 +396,7 @@ function ImageConverter() {
   const [convertedImage, setConvertedImage] = useState(null)
   const [targetFormat, setTargetFormat] = useState('png')
   const [isConverting, setIsConverting] = useState(false)
+  const { t } = useTranslation()
 
   const handleFileSelect = (event) => {
     const file = event.target.files[0]
@@ -473,7 +437,7 @@ function ImageConverter() {
       
       img.src = URL.createObjectURL(selectedFile)
     } catch (error) {
-      console.error('Error converting image:', error)
+      console.error(t('errors.convertingImage'), error)
       setIsConverting(false)
     }
   }
@@ -497,10 +461,10 @@ function ImageConverter() {
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-8">
         <h2 id="converter-heading" className="text-3xl font-bold text-gray-900 mb-4">
-          Convertidor de Imágenes
+          {t('converter.title')}
         </h2>
         <p className="text-gray-600">
-          Convierte tus imágenes entre diferentes formatos de manera rápida y segura
+          {t('converter.subtitle')}
         </p>
       </div>
 
@@ -510,14 +474,14 @@ function ImageConverter() {
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 hover:border-blue-400 transition-colors">
               <FileImage className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                Selecciona una imagen
+                {t('converter.selectImage')}
               </h3>
               <p className="text-gray-500 mb-4">
-                Soporta JPG, PNG, GIF, WebP y BMP
+                {t('converter.supportedFormats')}
               </p>
               <label className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors cursor-pointer inline-flex items-center">
                 <Upload className="w-5 h-5 mr-2" />
-                Subir Imagen
+                {t('converter.uploadImage')}
                 <input
                   type="file"
                   accept="image/*"
@@ -544,7 +508,7 @@ function ImageConverter() {
               <button
                 onClick={resetConverter}
                 className="text-gray-500 hover:text-gray-700 p-2"
-                aria-label="Cambiar imagen"
+                aria-label={t('converter.changeImage')}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -553,7 +517,7 @@ function ImageConverter() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Formato de salida
+                  {t('converter.targetFormat')}
                 </label>
                 <select
                   value={targetFormat}
@@ -572,7 +536,7 @@ function ImageConverter() {
                   disabled={isConverting}
                   className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  {isConverting ? 'Convirtiendo...' : 'Convertir Imagen'}
+                  {isConverting ? t('converter.converting') : t('converter.convertButton')}
                 </button>
               </div>
             </div>
@@ -586,7 +550,7 @@ function ImageConverter() {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-900">{convertedImage.filename}</h3>
-                      <p className="text-sm text-green-600">¡Conversión completada!</p>
+                      <p className="text-sm text-green-600">{t('converter.conversionComplete')}</p>
                     </div>
                   </div>
                   <button
@@ -594,7 +558,7 @@ function ImageConverter() {
                     className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center"
                   >
                     <Download className="w-5 h-5 mr-2" />
-                    Descargar
+                    {t('converter.downloadButton')}
                   </button>
                 </div>
               </div>
@@ -613,6 +577,7 @@ function DocumentViewer() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [processedStyles, setProcessedStyles] = useState([])
+  const { t } = useTranslation()
 
   const handleFileSelect = (event) => {
     const file = event.target.files[0]
@@ -718,10 +683,10 @@ function DocumentViewer() {
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <h2 id="viewer-heading" className="text-3xl font-bold text-gray-900 mb-4">
-          Visor de Documentos
+          {t('viewer.title')}
         </h2>
         <p className="text-gray-600">
-          Visualiza documentos PDF, Word y Excel directamente en tu navegador
+          {t('viewer.description')}
         </p>
       </div>
 
@@ -731,14 +696,14 @@ function DocumentViewer() {
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 hover:border-blue-400 transition-colors">
               <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                Selecciona un documento
+                {t('viewer.selectFile')}
               </h3>
               <p className="text-gray-500 mb-4">
-                Soporta PDF, Word (DOCX) y Excel (XLSX)
+                {t('viewer.supportedFormats')}
               </p>
               <label className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors cursor-pointer inline-flex items-center">
                 <Upload className="w-5 h-5 mr-2" />
-                Subir Documento
+                {t('viewer.uploadFile')}
                 <input
                   type="file"
                   accept=".pdf,.docx,.xlsx"
@@ -771,21 +736,21 @@ function DocumentViewer() {
                   className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center text-sm"
                 >
                   <Download className="w-4 h-4 mr-1" />
-                  Descargar
+                  {t('viewer.downloadButton')}
                 </button>
                 <button
                   onClick={() => document.querySelector('input[type="file"]').click()}
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center text-sm"
                 >
                   <Upload className="w-4 h-4 mr-1" />
-                  Cambiar archivo
+                  {t('viewer.changeFile')}
                 </button>
                 <button
                   onClick={resetViewer}
                   className="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-700 transition-colors flex items-center text-sm"
                 >
                   <X className="w-4 h-4 mr-1" />
-                  Nuevo documento
+                  {t('viewer.newFile')}
                 </button>
               </div>
             </div>
@@ -803,14 +768,14 @@ function DocumentViewer() {
           {isLoading && (
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-              <p className="text-gray-600">Cargando documento...</p>
+              <p className="text-gray-600">{t('viewer.loading')}</p>
             </div>
           )}
 
           {/* Error state */}
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <p className="text-red-800">Error: {error}</p>
+              <p className="text-red-800">{t('viewer.error')} {error}</p>
             </div>
           )}
 
@@ -822,7 +787,7 @@ function DocumentViewer() {
                   <iframe
                     src={fileContent.url}
                     className="w-full h-full border-0"
-                    title="PDF Viewer"
+                    title={t('viewer.pdfViewer')}
                   />
                 </div>
               )}
@@ -832,13 +797,13 @@ function DocumentViewer() {
                   {processedStyles.length > 0 && (
                     <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                       <p className="text-sm text-blue-800">
-                        ✓ Procesados {processedStyles.length} estilos personalizados
+                        {t('viewer.processedStyles')} {processedStyles.length}
                       </p>
                     </div>
                   )}
                   {fileContent.warnings && fileContent.warnings.length > 0 && (
                     <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <p className="text-sm text-yellow-800 font-medium mb-2">Advertencias:</p>
+                      <p className="text-sm text-yellow-800 font-medium mb-2">{t('viewer.warnings')}:</p>
                       <ul className="text-sm text-yellow-700 space-y-1">
                         {fileContent.warnings.map((warning, index) => (
                           <li key={index}>• {warning.message}</li>
@@ -857,7 +822,7 @@ function DocumentViewer() {
                 <div className="p-6">
                   {fileContent.sheetNames.length > 1 && (
                     <div className="mb-4">
-                      <h3 className="text-lg font-medium text-gray-900 mb-2">Hojas disponibles:</h3>
+                      <h3 className="text-lg font-medium text-gray-900 mb-2">{t('viewer.sheets')}:</h3>
                       <div className="flex flex-wrap gap-2">
                         {fileContent.sheetNames.map(sheetName => (
                           <span key={sheetName} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
