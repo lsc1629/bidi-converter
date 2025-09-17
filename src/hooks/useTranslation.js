@@ -129,7 +129,7 @@ const translations = {
     },
     converter: {
       title: 'Convertidor de Imágenes',
-      subtitle: 'Convierte entre JPG, PNG, WebP y GIF',
+      subtitle: 'Convierte entre JPG, PNG, WebP y GIF - Soporte para múltiples archivos',
       dragDrop: 'Arrastra y suelta tus imágenes aquí',
       or: 'o',
       selectFiles: 'Seleccionar archivos',
@@ -145,13 +145,28 @@ const translations = {
       originalSize: 'Tamaño original',
       convertedSize: 'Tamaño convertido',
       compressionRatio: 'Ratio de compresión',
-      selectImage: 'Selecciona una imagen',
+      selectImage: 'Puedes seleccionar de 1 a 10 imágenes',
       supportedFormats: 'Soporta JPG, PNG, GIF, WebP y BMP',
-      uploadImage: 'Subir Imagen',
+      uploadImage: 'Subir Imágenes',
       targetFormat: 'Formato de salida',
-      convertButton: 'Convertir Imagen',
+      convertButton: 'Convertir Imágenes',
       conversionComplete: '¡Conversión completada!',
-      downloadButton: 'Descargar'
+      downloadButton: 'Descargar',
+      batchConversion: 'Conversión por Lotes',
+      filesSelected: 'archivos seleccionados',
+      maxFiles: 'Máximo 10 archivos',
+      progress: 'Progreso',
+      convertingFile: 'Convirtiendo',
+      fileInfo: 'Información del archivo',
+      originalFile: 'Archivo original',
+      convertedFile: 'Archivo convertido',
+      fileSize: 'Tamaño',
+      fileType: 'Tipo',
+      compressionSaved: 'Compresión',
+      conversionTime: 'Tiempo',
+      removeFile: 'Eliminar',
+      addMoreFiles: 'Agregar más archivos',
+      clearAll: 'Limpiar todo'
     },
     viewer: {
       title: 'Visor de Documentos',
@@ -160,6 +175,7 @@ const translations = {
       or: 'o',
       selectFiles: 'Seleccionar archivos',
       download: 'Descargar',
+      downloadButton: 'Descargar',
       processing: 'Procesando...',
       changeFile: 'Cambiar archivo',
       pdfViewer: 'Visor de PDF',
@@ -183,20 +199,23 @@ const translations = {
     },
     footer: {
       description: 'Herramienta gratuita para convertir imágenes y visualizar documentos online.',
-      copyright: 'Todos los derechos reservados.'
+      copyright: 'Todos los derechos reservados.',
+      contact: 'Contáctame',
+      email: 'donluissalascortes@gmail.com',
+      whatsapp: '+56994039964'
     },
     seo: {
       home: {
-        title: 'Convertidor de Imágenes y Visor de Documentos Online Gratis | Bidi Converter',
-        description: 'Convierte imágenes PNG, JPG, WebP, GIF gratis online. Visualiza PDF, Word, Excel sin descargar. Herramienta profesional, rápida y segura. Sin registro requerido.'
+        title: '🚀 Convertidor GRATIS: Imágenes + PDF Viewer | Sin Registro 2024',
+        description: '✅ Convierte 10+ formatos de imagen GRATIS. Visualiza PDF, Word, Excel SIN descargar. Procesamiento local = máxima seguridad. ¡Pruébalo ahora!'
       },
       converter: {
-        title: 'Convertir Imágenes Online Gratis - PNG a JPG, WebP, GIF | Bidi Converter',
-        description: 'Convertidor de imágenes online gratuito. Cambia formato de PNG a JPG, WebP, GIF y BMP. Conversión rápida, segura y sin límites. Ideal para profesionales.'
+        title: '⚡ Convertir Imágenes GRATIS: PNG→JPG en 3 Segundos | Bidi Converter',
+        description: '🎯 Convierte hasta 10 imágenes simultáneamente. PNG, JPG, WebP, GIF → Calidad profesional garantizada. Sin marcas de agua. ¡Conversión instantánea!'
       },
       viewer: {
-        title: 'Visor de PDF, Word y Excel Online Gratis | Abrir Documentos Sin Descargar',
-        description: 'Abre y visualiza archivos PDF, Word (DOCX) y Excel (XLSX) online sin descargar. Visor de documentos gratuito, seguro y compatible con todos los dispositivos.'
+        title: '📄 Abrir PDF/Word/Excel ONLINE - SIN Descargar | Viewer Gratuito 2024',
+        description: '🔒 Visualiza documentos de forma SEGURA en tu navegador. Compatible con PDF, DOCX, XLSX. Sin instalaciones. Procesamiento local 100% privado.'
       }
     },
     aria: {
@@ -347,7 +366,7 @@ const translations = {
     },
     converter: {
       title: 'Image Converter',
-      subtitle: 'Convert between JPG, PNG, WebP and GIF',
+      subtitle: 'Convert between JPG, PNG, WebP and GIF - Multiple files support',
       dragDrop: 'Drag and drop your images here',
       or: 'or',
       selectFiles: 'Select files',
@@ -363,13 +382,28 @@ const translations = {
       originalSize: 'Original size',
       convertedSize: 'Converted size',
       compressionRatio: 'Compression ratio',
-      selectImage: 'Select an image',
+      selectImage: 'You can select from 1 to 10 images',
       supportedFormats: 'Supports JPG, PNG, GIF, WebP and BMP',
-      uploadImage: 'Upload Image',
+      uploadImage: 'Upload Images',
       targetFormat: 'Output format',
-      convertButton: 'Convert Image',
+      convertButton: 'Convert Images',
       conversionComplete: 'Conversion completed!',
-      downloadButton: 'Download'
+      downloadButton: 'Download',
+      batchConversion: 'Batch Conversion',
+      filesSelected: 'files selected',
+      maxFiles: 'Maximum 10 files',
+      progress: 'Progress',
+      convertingFile: 'Converting',
+      fileInfo: 'File information',
+      originalFile: 'Original file',
+      convertedFile: 'Converted file',
+      fileSize: 'Size',
+      fileType: 'Type',
+      compressionSaved: 'Compression',
+      conversionTime: 'Time',
+      removeFile: 'Remove',
+      addMoreFiles: 'Add more files',
+      clearAll: 'Clear all'
     },
     viewer: {
       title: 'Document Viewer',
@@ -378,6 +412,7 @@ const translations = {
       or: 'or',
       selectFiles: 'Select files',
       download: 'Download',
+      downloadButton: 'Download',
       processing: 'Processing...',
       changeFile: 'Change file',
       pdfViewer: 'PDF Viewer',
@@ -401,20 +436,23 @@ const translations = {
     },
     footer: {
       description: 'Free tool to convert images and view documents online.',
-      copyright: 'All rights reserved.'
+      copyright: 'All rights reserved.',
+      contact: 'Contact me',
+      email: 'donluissalascortes@gmail.com',
+      whatsapp: '+56994039964'
     },
     seo: {
       home: {
-        title: 'Free Online Image Converter & PDF Viewer | Convert Images, View Documents',
-        description: 'Convert images online free: PNG to JPG, WebP converter, GIF to PNG. View PDF, Word, Excel files without downloading. Best free image converter and document viewer 2024.'
+        title: '🔥 FREE Image Converter + PDF Viewer | No Sign-Up Required 2024',
+        description: '⚡ Convert 10+ image formats INSTANTLY. View PDF/Word/Excel WITHOUT downloading. 100% browser-based = ultra-secure. Try it now - completely FREE!'
       },
       converter: {
-        title: 'Free Image Converter Online - PNG to JPG, WebP, GIF | Batch Convert Images',
-        description: 'Best free online image converter. Convert PNG to JPG, WebP converter, GIF to PNG, batch image conversion. Fast, secure, no watermarks. Professional image format converter.'
+        title: '💯 Convert Images FREE: PNG→JPG in 3 Seconds | Batch Processing',
+        description: '🚀 Convert up to 10 images simultaneously! PNG, JPG, WebP, GIF → Professional quality guaranteed. No watermarks. Lightning-fast conversion!'
       },
       viewer: {
-        title: 'Free PDF Viewer Online | Open Word, Excel Files Without Downloading',
-        description: 'View PDF online free, open Word documents, Excel viewer online. No download required. Best online document viewer for PDF, DOCX, XLSX files. Safe and secure.'
+        title: '📱 Open PDF/Word/Excel ONLINE - No Download | Free Viewer 2024',
+        description: '🛡️ View documents SAFELY in your browser. Supports PDF, DOCX, XLSX. Zero installations needed. 100% private local processing.'
       }
     },
     aria: {
