@@ -1,32 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página Principal -->
   <url>
     <loc>https://bidiconverter.com/</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2024-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Herramientas Principales -->
   <url>
-    <loc>https://bidiconverter.com/convertidor-imagenes</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://bidiconverter.com/converter</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/viewer</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Páginas de Contenido -->
+  <url>
+    <loc>https://bidiconverter.com/blog</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bidiconverter.com/visor-documentos</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bidiconverter.com/convertir-jpg-png</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://bidiconverter.com/about</loc>
+    <lastmod>2024-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bidiconverter.com/visor-pdf</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://bidiconverter.com/contact</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Páginas Legales -->
+  <url>
+    <loc>https://bidiconverter.com/privacy</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/terms</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Páginas de Conversiones Específicas (para SEO) -->
+  <url>
+    <loc>https://bidiconverter.com/jpg-to-png</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/png-to-webp</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/gif-to-webp</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/webp-to-jpg</loc>
+    <lastmod>2024-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/pdf-viewer</loc>
+    <lastmod>2024-09-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
