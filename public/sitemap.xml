@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <!-- Página Principal -->
   <url>
     <loc>https://bidiconverter.com/</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,33 +13,317 @@
   <!-- Herramientas Principales -->
   <url>
     <loc>https://bidiconverter.com/converter</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/conversor</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/editor</loc>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/viewer</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/visor</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/dev-tools</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/herramientas-dev</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- UNIT CONVERTER - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/unit-converter</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/unit-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-unidades"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-unidades"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/conversor-unidades</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/unit-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-unidades"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-unidades"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- PERCENTAGE CALCULATOR - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/percentage-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/percentage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/calculadora-porcentajes"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/calculadora-porcentagens"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/calculadora-porcentajes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/percentage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/calculadora-porcentajes"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/calculadora-porcentagens"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/calculadora-porcentagens</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/percentage-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/calculadora-porcentajes"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/calculadora-porcentagens"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- PASSWORD GENERATOR - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/password-generator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-contraseñas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-senhas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/generador-contraseñas</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-contraseñas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-senhas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/gerador-senhas</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-contraseñas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-senhas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- CURRENCY CONVERTER - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/currency-converter</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-divisas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-moedas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/conversor-divisas</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-divisas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-moedas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/conversor-moedas</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/currency-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-divisas"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-moedas"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- BMI CALCULATOR - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/bmi-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/bmi-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/calculadora-imc"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/calculadora-imc"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/calculadora-imc</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/bmi-calculator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/calculadora-imc"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/calculadora-imc"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- QR CODE GENERATOR - Multiidioma con contenido SEO -->
+  <url>
+    <loc>https://bidiconverter.com/qr-generator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/qr-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-qr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-qr"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/generador-qr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/qr-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-qr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-qr"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/gerador-qr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/qr-generator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/generador-qr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/gerador-qr"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- RUT VALIDATOR - Multiidioma -->
+  <url>
+    <loc>https://bidiconverter.com/rut-validator</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/rut-validator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/validador-rut"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/validador-rut"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/validador-rut</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/rut-validator"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/validador-rut"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/validador-rut"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- TEXT CONVERTER - Multiidioma -->
+  <url>
+    <loc>https://bidiconverter.com/text-converter</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/text-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-texto"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-texto"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/conversor-texto</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/text-converter"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/conversor-texto"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/conversor-texto"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- URL SHORTENER - Multiidioma -->
+  <url>
+    <loc>https://bidiconverter.com/url-shortener</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/url-shortener"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/acortador-url"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/encurtador-url"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/acortador-url</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/url-shortener"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/acortador-url"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/encurtador-url"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/encurtador-url</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/url-shortener"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/acortador-url"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/encurtador-url"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- ZIP COMPRESSOR - Multiidioma -->
+  <url>
+    <loc>https://bidiconverter.com/zip-compressor</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/zip-compressor"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/compresor-zip"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/compressor-zip"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/compresor-zip</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/zip-compressor"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/compresor-zip"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/compressor-zip"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bidiconverter.com/compressor-zip</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bidiconverter.com/zip-compressor"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bidiconverter.com/compresor-zip"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://bidiconverter.com/compressor-zip"/>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Páginas de Contenido -->
   <url>
     <loc>https://bidiconverter.com/blog</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/about</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/contact</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -45,13 +331,13 @@
   <!-- Páginas Legales -->
   <url>
     <loc>https://bidiconverter.com/privacy</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/terms</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -59,31 +345,31 @@
   <!-- Páginas de Conversiones Específicas (para SEO) -->
   <url>
     <loc>https://bidiconverter.com/jpg-to-png</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/png-to-webp</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/gif-to-webp</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/webp-to-jpg</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bidiconverter.com/pdf-viewer</loc>
-    <lastmod>2024-09-30</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
