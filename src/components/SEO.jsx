@@ -28,6 +28,11 @@ const SEO = ({ page }) => {
         description: 'Visualiza documentos PDF, Word (DOCX) y Excel (XLSX) directamente en tu navegador. Visor seguro y privado sin necesidad de software adicional.',
         keywords: 'visor PDF, abrir Word online, visualizar Excel, lector documentos, visor archivos online'
       },
+      transcriber: {
+        title: `🎤 Transcriptor de Audio GRATIS - Voz a Texto Online ${currentYear}`,
+        description: 'Convierte audio a texto con reconocimiento de voz avanzado. Soporte múltiples idiomas, exporta en TXT, HTML, Markdown y JSON. Procesamiento local seguro.',
+        keywords: 'transcriptor audio, voz a texto, speech to text, reconocimiento voz, transcribir audio gratis, audio to text español'
+      },
       privacy: {
         title: 'Política de Privacidad - Bidi Converter',
         description: 'Conoce cómo protegemos tu privacidad en Bidi Converter. Procesamiento local de archivos, sin almacenamiento en servidores, máxima seguridad garantizada.',

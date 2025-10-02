@@ -1,4 +1,5 @@
 import { useLanguage } from './useLanguage'
+import { toolsTranslations } from '../i18n/toolsTranslations'
 
 // Diccionario de traducciones completo
 const translations = {
@@ -237,7 +238,8 @@ const translations = {
       fileSize: 'Tamaño del archivo',
       fileName: 'Nombre del archivo',
       fileType: 'Tipo de archivo'
-    }
+    },
+    ...toolsTranslations.es
   },
   en: {
     nav: {
@@ -474,7 +476,11 @@ const translations = {
       fileSize: 'File size',
       fileName: 'File name',
       fileType: 'File type'
-    }
+    },
+    ...toolsTranslations.en
+  },
+  pt: {
+    ...toolsTranslations.pt
   }
 }
 

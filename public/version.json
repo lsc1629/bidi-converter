@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "buildDate": "2025-10-01",
+  "features": [
+    "Transcriptor de audio con visualización en tiempo real",
+    "Sistema de limpieza automática de caché",
+    "ErrorBoundary para prevenir pantallas en blanco"
+  ]
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../hooks/useLanguage';
+import { routes } from '../utils/routes';
 import { 
   FileImage, 
   FileText, 
@@ -16,11 +18,24 @@ import {
   Smartphone,
   Globe,
   Award,
-  Heart
+  Heart,
+  Ruler,
+  Percent,
+  DollarSign,
+  Key,
+  CreditCard,
+  Activity,
+  Type,
+  Link as LinkIcon,
+  FileArchive,
+  QrCode
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const HomePage = () => {
+  const { language } = useLanguage();
+  const r = routes[language] || routes.en;
+  
   return (
     <>
       <SEO page="home" />
@@ -38,7 +53,7 @@ const HomePage = () => {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-center mb-8 animate-fade-in-up animation-delay-600">
               <Link
-                to="/converter"
+                to={r.converter}
                 className="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center transform group"
               >
                 <FileImage className="w-5 h-5 mr-2 group-hover:animate-pulse" />
@@ -46,7 +61,7 @@ const HomePage = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               <Link
-                to="/editor"
+                to={r.editor}
                 className="bg-purple-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-purple-700 hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center transform group"
               >
                 <Code className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
@@ -54,7 +69,7 @@ const HomePage = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               <Link
-                to="/dev-tools"
+                to={r.devTools}
                 className="bg-green-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-green-700 hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center transform group"
               >
                 <Code className="w-5 h-5 mr-2 group-hover:animate-bounce" />
@@ -62,13 +77,60 @@ const HomePage = () => {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               <Link
-                to="/viewer"
+                to={r.viewer}
                 className="border-2 border-blue-600 text-blue-600 px-6 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center transform group"
               >
                 <FileText className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
                 Visor
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
+            </div>
+            
+            {/* Nuevas Herramientas */}
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">🛠️ Herramientas Gratuitas</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                <Link to={r.unitConverter} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <Ruler className="w-6 h-6 text-blue-600 mb-1" />
+                  <span className="text-sm font-medium">Unidades</span>
+                </Link>
+                <Link to={r.percentageCalculator} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <Percent className="w-6 h-6 text-green-600 mb-1" />
+                  <span className="text-sm font-medium">Porcentajes</span>
+                </Link>
+                <Link to={r.currencyConverter} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <DollarSign className="w-6 h-6 text-yellow-600 mb-1" />
+                  <span className="text-sm font-medium">Divisas</span>
+                </Link>
+                <Link to={r.passwordGenerator} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <Key className="w-6 h-6 text-purple-600 mb-1" />
+                  <span className="text-sm font-medium">Contraseñas</span>
+                </Link>
+                <Link to={r.rutValidator} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <CreditCard className="w-6 h-6 text-indigo-600 mb-1" />
+                  <span className="text-sm font-medium">RUT/DNI</span>
+                </Link>
+                <Link to={r.bmiCalculator} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <Activity className="w-6 h-6 text-red-600 mb-1" />
+                  <span className="text-sm font-medium">IMC</span>
+                </Link>
+                <Link to={r.textConverter} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <Type className="w-6 h-6 text-gray-600 mb-1" />
+                  <span className="text-sm font-medium">Texto</span>
+                </Link>
+                <Link to={r.urlShortener} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <LinkIcon className="w-6 h-6 text-blue-600 mb-1" />
+                  <span className="text-sm font-medium">Acortar URL</span>
+                </Link>
+                <Link to={r.zipCompressor} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <FileArchive className="w-6 h-6 text-orange-600 mb-1" />
+                  <span className="text-sm font-medium">ZIP</span>
+                </Link>
+                <Link to={r.qrGenerator} className="bg-white border-2 border-gray-200 px-4 py-3 rounded-lg hover:border-blue-500 hover:shadow-md transition-all flex flex-col items-center text-center">
+                  <QrCode className="w-6 h-6 text-black mb-1" />
+                  <span className="text-sm font-medium">Código QR</span>
+                </Link>
+              </div>
             </div>
             <div className="flex items-center justify-center space-x-6 text-sm text-gray-500 animate-fade-in-up animation-delay-800">
               <div className="flex items-center hover:scale-110 transition-transform duration-300">

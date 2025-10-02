@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTranslation } from '../hooks/useTranslation';
+import { routes } from '../utils/routes';
 import SEO from './SEO';
 
 const Layout = ({ children }) => {
@@ -10,34 +11,74 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const { language } = useLanguage();
   const { t } = useTranslation();
+  const r = routes[language] || routes.en;
+
+  const navigation = [
+    { name: 'Inicio', href: '/' },
+    { name: 'Convertidor', href: r.converter },
+    { name: 'Editor', href: r.editor },
+    { name: 'Dev Tools', href: r.devTools },
+    { name: 'Visor', href: r.viewer },
+    { name: 'Blog', href: r.blog },
+    { name: 'Acerca de', href: r.about },
+    { name: 'Contacto', href: r.contact }
+  ];
 
   const getPageFromPath = (pathname) => {
-    if (pathname === '/') return 'home';
-    if (pathname === '/converter') return 'converter';
-    if (pathname === '/editor') return 'editor';
-    if (pathname === '/dev-tools') return 'devtools';
-    if (pathname === '/viewer') return 'viewer';
-    if (pathname === '/privacy') return 'privacy';
-    if (pathname === '/terms') return 'terms';
-    if (pathname === '/contact') return 'contact';
-    if (pathname === '/about') return 'about';
-    if (pathname === '/blog') return 'blog';
-    return 'home';
+    const page = navigation.find((page) => page.href === pathname);
+    return page ? page.name : 'home';
   };
-
+  
   const currentPage = getPageFromPath(location.pathname);
 
   const getBreadcrumbTitle = (pathname) => {
     switch (pathname) {
-      case '/converter': return 'Convertidor de Imágenes';
+      case '/converter':
+      case '/conversor': return 'Convertidor de Imágenes';
       case '/editor': return 'Editor de Imágenes';
-      case '/dev-tools': return 'Herramientas para Desarrolladores';
-      case '/viewer': return 'Visor de Documentos';
+      case '/dev-tools':
+      case '/herramientas-dev':
+      case '/ferramentas-dev': return 'Herramientas para Desarrolladores';
+      case '/viewer':
+      case '/visor':
+      case '/visualizador': return 'Visor de Documentos';
+      case '/unit-converter':
+      case '/conversor-unidades': return 'Conversor de Unidades';
+      case '/percentage-calculator':
+      case '/calculadora-porcentajes':
+      case '/calculadora-porcentagens': return 'Calculadora de Porcentajes';
+      case '/currency-converter':
+      case '/conversor-divisas':
+      case '/conversor-moedas': return 'Conversor de Divisas';
+      case '/password-generator':
+      case '/generador-contrasenas':
+      case '/gerador-senhas': return 'Generador de Contraseñas';
+      case '/rut-validator':
+      case '/validador-rut':
+      case '/id-validator':
+      case '/validador-cpf': return 'Validador RUT/DNI';
+      case '/bmi-calculator':
+      case '/calculadora-imc': return 'Calculadora IMC';
+      case '/text-converter':
+      case '/conversor-texto': return 'Conversor de Texto';
+      case '/url-shortener':
+      case '/acortador-url':
+      case '/encurtador-url': return 'Acortador de Enlaces';
+      case '/zip-compressor':
+      case '/compresor-zip':
+      case '/compressor-zip': return 'Compresor ZIP';
+      case '/qr-generator':
+      case '/generador-qr':
+      case '/gerador-qr': return 'Generador de Código QR';
+      case '/about':
+      case '/acerca':
+      case '/sobre': return 'Acerca de Nosotros';
+      case '/blog': return 'Blog y Guías';
+      case '/contact':
+      case '/contacto':
+      case '/contato': return 'Contacto';
       case '/privacy': return 'Política de Privacidad';
       case '/terms': return 'Términos de Servicio';
-      case '/contact': return 'Contacto';
-      case '/about': return 'Acerca de';
-      case '/blog': return 'Blog';
       default: return 'Inicio';
     }
   };
@@ -61,86 +102,19 @@ const Layout = ({ children }) => {
               
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
-                <Link
-                  to="/"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Inicio
-                </Link>
-                <Link
-                  to="/converter"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/converter'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Convertidor
-                </Link>
-                <Link
-                  to="/editor"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/editor'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Editor
-                </Link>
-                <Link
-                  to="/dev-tools"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/dev-tools'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Dev Tools
-                </Link>
-                <Link
-                  to="/viewer"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/viewer'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Visor
-                </Link>
-                <Link
-                  to="/blog"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/blog'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Blog
-                </Link>
-                <Link
-                  to="/about"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/about'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Acerca de
-                </Link>
-                <Link
-                  to="/contact"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === '/contact'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  Contacto
-                </Link>
+                {navigation.map((item) => (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.href
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </div>
 
               {/* Mobile menu button */}
@@ -159,94 +133,20 @@ const Layout = ({ children }) => {
             {isMenuOpen && (
               <div className="md:hidden">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-                  <Link
-                    to="/"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Inicio
-                  </Link>
-                  <Link
-                    to="/converter"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/converter'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Convertidor
-                  </Link>
-                  <Link
-                    to="/editor"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/editor'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Editor
-                  </Link>
-                  <Link
-                    to="/dev-tools"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/dev-tools'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Dev Tools
-                  </Link>
-                  <Link
-                    to="/viewer"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/viewer'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Visor
-                  </Link>
-                  <Link
-                    to="/blog"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/blog'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    to="/about"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/about'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Acerca de
-                  </Link>
-                  <Link
-                    to="/contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
-                      location.pathname === '/contact'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    Contacto
-                  </Link>
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
+                        location.pathname === item.href
+                          ? 'bg-blue-100 text-blue-700'
+                          : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}
