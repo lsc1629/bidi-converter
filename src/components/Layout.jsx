@@ -5,6 +5,9 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useTranslation } from '../hooks/useTranslation';
 import { routes } from '../utils/routes';
 import SEO from './SEO';
+import SchemaMarkup from './SchemaMarkup';
+import CriticalCSS, { CriticalFonts, CriticalResourceHints } from './CriticalCSS';
+import LanguageDebugger from './LanguageDebugger';
 
 const Layout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +32,73 @@ const Layout = ({ children }) => {
     return page ? page.name : 'home';
   };
   
+  const getPageType = (pathname) => {
+    switch (pathname) {
+      case '/converter':
+      case '/conversor': return 'converter';
+      case '/editor': return 'editor';
+      case '/dev-tools':
+      case '/herramientas-dev':
+      case '/ferramentas-dev': return 'devtools';
+      case '/viewer':
+      case '/visor':
+      case '/visualizador': return 'viewer';
+      case '/unit-converter':
+      case '/conversor-unidades': return 'unit-converter';
+      case '/percentage-calculator':
+      case '/calculadora-porcentajes':
+      case '/calculadora-porcentagens': return 'percentage-calculator';
+      case '/currency-converter':
+      case '/conversor-divisas':
+      case '/conversor-moedas': return 'currency-converter';
+      case '/password-generator':
+      case '/generador-contrasenas':
+      case '/gerador-senhas': return 'password-generator';
+      case '/bmi-calculator':
+      case '/calculadora-imc': return 'bmi-calculator';
+      case '/qr-generator':
+      case '/generador-qr':
+      case '/gerador-qr': return 'qr-generator';
+      case '/about':
+      case '/acerca':
+      case '/sobre': return 'about';
+      case '/contact':
+      case '/contacto':
+      case '/contato': return 'contact';
+      case '/blog': return 'blog';
+      case '/privacy': return 'privacy';
+      case '/terms': return 'terms';
+      default: return 'home';
+    }
+  };
+
+  const getToolName = (pathname) => {
+    switch (pathname) {
+      case '/converter':
+      case '/conversor': return 'imageConverter';
+      case '/password-generator':
+      case '/generador-contrasenas':
+      case '/gerador-senhas': return 'passwordGenerator';
+      case '/currency-converter':
+      case '/conversor-divisas':
+      case '/conversor-moedas': return 'currencyConverter';
+      case '/bmi-calculator':
+      case '/calculadora-imc': return 'bmiCalculator';
+      case '/qr-generator':
+      case '/generador-qr':
+      case '/gerador-qr': return 'qrGenerator';
+      case '/unit-converter':
+      case '/conversor-unidades': return 'unitConverter';
+      case '/percentage-calculator':
+      case '/calculadora-porcentajes':
+      case '/calculadora-porcentagens': return 'percentageCalculator';
+      default: return null;
+    }
+  };
+  
   const currentPage = getPageFromPath(location.pathname);
+  const pageType = getPageType(location.pathname);
+  const toolName = getToolName(location.pathname);
 
   const getBreadcrumbTitle = (pathname) => {
     switch (pathname) {
@@ -85,7 +154,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <CriticalCSS />
+      <CriticalFonts />
+      <CriticalResourceHints />
       <SEO page={currentPage} />
+      <SchemaMarkup page={pageType} toolName={toolName} />
       
       <div className="min-h-screen bg-gray-50">
         {/* Header with structured navigation */}
@@ -278,6 +351,9 @@ const Layout = ({ children }) => {
           </div>
         </footer>
       </div>
+      
+      {/* Language Debugger - Solo visible en desarrollo */}
+      <LanguageDebugger />
     </>
   );
 };

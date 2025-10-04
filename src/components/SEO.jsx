@@ -67,6 +67,37 @@ const SEO = ({ page }) => {
         title: 'Herramientas para Desarrolladores - Base64, Favicons, CSS Sprites',
         description: 'Herramientas especializadas para desarrolladores web: convertir a Base64, generar favicons, crear CSS sprites y código responsive. Todo gratis y local.',
         keywords: 'herramientas desarrolladores, base64 encoder, favicon generator, css sprites, código responsive, dev tools'
+      },
+      // Landing Pages Específicas
+      'png-to-jpg': {
+        title: '🔄 Convertir PNG a JPG Online Gratis - Sin Pérdida de Calidad 2025',
+        description: 'Convierte imágenes PNG a JPG manteniendo la máxima calidad. Herramienta gratuita, rápida y segura. Sin registro ni marcas de agua. Reduce el tamaño hasta 70%.',
+        keywords: 'convertir PNG a JPG, PNG to JPG converter, convertidor PNG JPG gratis, cambiar PNG a JPEG, optimizar imágenes web'
+      },
+      'jpg-to-png': {
+        title: '🎨 Convertir JPG a PNG Online - Máxima Calidad Sin Compresión 2025',
+        description: 'Convierte JPG a PNG para obtener máxima calidad sin pérdidas. Ideal para edición, transparencia y gráficos. Herramienta gratuita y segura.',
+        keywords: 'convertir JPG a PNG, JPG to PNG converter, JPEG a PNG, convertidor sin pérdida, máxima calidad imagen'
+      },
+      'png-to-webp': {
+        title: '⚡ Convertir PNG a WebP - Reduce Tamaño 80% Sin Perder Calidad 2025',
+        description: 'Convierte PNG a WebP y reduce el tamaño hasta 80% manteniendo la calidad y transparencia. Formato moderno para web optimizada. Gratis y seguro.',
+        keywords: 'convertir PNG a WebP, PNG to WebP converter, optimizar imágenes web, formato WebP, reducir tamaño imagen'
+      },
+      'webp-to-jpg': {
+        title: '🔄 Convertir WebP a JPG - Máxima Compatibilidad Universal 2025',
+        description: 'Convierte WebP a JPG para compatibilidad universal. Ideal para compartir, imprimir y usar en software que no soporta WebP. Gratis y rápido.',
+        keywords: 'convertir WebP a JPG, WebP to JPG converter, compatibilidad universal, WebP a JPEG'
+      },
+      'jpg-to-webp': {
+        title: '📸 Convertir JPG a WebP - Optimización Web Avanzada 2025',
+        description: 'Convierte JPG a WebP para optimización web superior. Reduce tamaño 25-50% manteniendo calidad. Mejora velocidad de carga y SEO. Gratis.',
+        keywords: 'convertir JPG a WebP, JPG to WebP converter, optimizar fotografías web, JPEG a WebP, velocidad web'
+      },
+      'gif-to-webp': {
+        title: '🎬 Convertir GIF a WebP - Animaciones Más Ligeras y Rápidas 2025',
+        description: 'Convierte GIF a WebP animado para reducir tamaño hasta 90%. Mantiene animación con calidad superior. Ideal para web moderna. Gratis y fácil.',
+        keywords: 'convertir GIF a WebP, GIF to WebP converter, animaciones WebP, optimizar GIF, reducir tamaño GIF'
       }
     };
     
@@ -142,16 +173,91 @@ const SEO = ({ page }) => {
     // Update document lang
     document.documentElement.lang = language || 'es';
     
-    // Add canonical URL
+    // Add canonical URL - Mejorado para evitar duplicados
+    const getCanonicalUrl = (pathname) => {
+      const baseUrl = 'https://bidiconverter.com';
+      // Mapear rutas duplicadas a la versión canónica
+      const canonicalPaths = {
+        '/conversor': '/converter',
+        '/herramientas-dev': '/dev-tools',
+        '/ferramentas-dev': '/dev-tools',
+        '/visor': '/viewer',
+        '/visualizador': '/viewer',
+        '/generador-contrasenas': '/password-generator',
+        '/gerador-senhas': '/password-generator',
+        '/conversor-divisas': '/currency-converter',
+        '/conversor-moedas': '/currency-converter',
+        '/calculadora-imc': '/bmi-calculator',
+        '/generador-qr': '/qr-generator',
+        '/gerador-qr': '/qr-generator',
+        '/conversor-unidades': '/unit-converter',
+        '/calculadora-porcentajes': '/percentage-calculator',
+        '/calculadora-porcentagens': '/percentage-calculator',
+        '/acerca': '/about',
+        '/sobre': '/about',
+        '/contacto': '/contact',
+        '/contato': '/contact'
+      };
+      
+      const canonicalPath = canonicalPaths[pathname] || pathname;
+      return `${baseUrl}${canonicalPath}`;
+    };
+
     let canonicalLink = document.querySelector('link[rel="canonical"]');
+    const canonicalUrl = getCanonicalUrl(window.location.pathname);
+    
     if (canonicalLink) {
-      canonicalLink.setAttribute('href', window.location.href);
+      canonicalLink.setAttribute('href', canonicalUrl);
     } else {
       canonicalLink = document.createElement('link');
       canonicalLink.setAttribute('rel', 'canonical');
-      canonicalLink.setAttribute('href', window.location.href);
+      canonicalLink.setAttribute('href', canonicalUrl);
       document.head.appendChild(canonicalLink);
     }
+
+    // Agregar hreflang para páginas multiidioma
+    const addHreflangTags = (pathname) => {
+      // Limpiar hreflang existentes
+      const existingHreflang = document.querySelectorAll('link[rel="alternate"][hreflang]');
+      existingHreflang.forEach(link => link.remove());
+
+      const hreflangMappings = {
+        '/converter': {
+          'es': '/conversor',
+          'en': '/converter',
+          'pt': '/conversor'
+        },
+        '/conversor': {
+          'es': '/conversor', 
+          'en': '/converter',
+          'pt': '/conversor'
+        },
+        '/password-generator': {
+          'es': '/generador-contrasenas',
+          'en': '/password-generator',
+          'pt': '/gerador-senhas'
+        },
+        '/generador-contrasenas': {
+          'es': '/generador-contrasenas',
+          'en': '/password-generator', 
+          'pt': '/gerador-senhas'
+        }
+        // Agregar más según sea necesario
+      };
+
+      const mapping = hreflangMappings[pathname];
+      if (mapping) {
+        Object.entries(mapping).forEach(([lang, path]) => {
+          const hreflangLink = document.createElement('link');
+          hreflangLink.setAttribute('rel', 'alternate');
+          hreflangLink.setAttribute('hreflang', lang);
+          hreflangLink.setAttribute('href', `https://bidiconverter.com${path}`);
+          document.head.appendChild(hreflangLink);
+        });
+      }
+    };
+
+    addHreflangTags(window.location.pathname);
     
   }, [page, language, t]);
 

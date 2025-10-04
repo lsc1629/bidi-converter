@@ -1,0 +1,231 @@
+{
+  "name": "Bidi Converter - Free Image Converter & PDF Viewer",
+  "short_name": "Bidi Converter",
+  "description": "Free online image converter supporting 10+ formats. Convert PNG, JPG, WebP, GIF instantly. Available in 7 languages worldwide.",
+  "version": "2.1.0",
+  "manifest_version": 3,
+  
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  
+  "categories": ["productivity", "utilities", "photo"],
+  "lang": "en",
+  
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home screen showing image converter tools"
+    },
+    {
+      "src": "/screenshots/mobile-converter.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile image converter interface"
+    },
+    {
+      "src": "/screenshots/mobile-editor.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile image editor with filters"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Image Converter",
+      "short_name": "Convert",
+      "description": "Convert images between formats",
+      "url": "/converter",
+      "icons": [
+        {
+          "src": "/icons/shortcut-converter.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "PDF Viewer",
+      "short_name": "PDF",
+      "description": "View PDF files online",
+      "url": "/viewer",
+      "icons": [
+        {
+          "src": "/icons/shortcut-pdf.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Image Editor",
+      "short_name": "Edit",
+      "description": "Edit images with filters",
+      "url": "/editor",
+      "icons": [
+        {
+          "src": "/icons/shortcut-editor.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "QR Generator",
+      "short_name": "QR",
+      "description": "Generate QR codes",
+      "url": "/qr-generator",
+      "icons": [
+        {
+          "src": "/icons/shortcut-qr.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/converter",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "image",
+          "accept": ["image/*", ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"]
+        }
+      ]
+    }
+  },
+  
+  "file_handlers": [
+    {
+      "action": "/converter",
+      "accept": {
+        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp"],
+        "application/pdf": [".pdf"]
+      }
+    }
+  ],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+bidiconverter",
+      "url": "/converter?url=%s"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  "related_applications": [],
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  
+  "handle_links": "preferred",
+  
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  
+  "id": "bidi-converter-pwa",
+  
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  
+  "localization": {
+    "es": {
+      "name": "Bidi Converter - Convertidor de Imágenes y Visor PDF Gratis",
+      "short_name": "Bidi Converter",
+      "description": "Convertidor de imágenes online gratuito con soporte para 10+ formatos. Convierte PNG, JPG, WebP, GIF al instante. Disponible en 7 idiomas."
+    },
+    "pt": {
+      "name": "Bidi Converter - Conversor de Imagens e Visualizador PDF Grátis",
+      "short_name": "Bidi Converter", 
+      "description": "Conversor de imagens online gratuito com suporte para 10+ formatos. Converta PNG, JPG, WebP, GIF instantaneamente. Disponível em 7 idiomas."
+    },
+    "hi": {
+      "name": "Bidi Converter - मुफ्त इमेज कन्वर्टर और PDF व्यूअर",
+      "short_name": "Bidi Converter",
+      "description": "10+ फॉर्मेट के साथ मुफ्त ऑनलाइन इमेज कन्वर्टर। PNG, JPG, WebP, GIF तुरंत कन्वर्ट करें। 7 भाषाओं में उपलब्ध।"
+    },
+    "id": {
+      "name": "Bidi Converter - Konverter Gambar dan PDF Viewer Gratis",
+      "short_name": "Bidi Converter",
+      "description": "Konverter gambar online gratis dengan dukungan 10+ format. Konversi PNG, JPG, WebP, GIF secara instan. Tersedia dalam 7 bahasa."
+    },
+    "ru": {
+      "name": "Bidi Converter - Бесплатный Конвертер Изображений и PDF Просмотр",
+      "short_name": "Bidi Converter",
+      "description": "Бесплатный онлайн конвертер изображений с поддержкой 10+ форматов. Конвертируйте PNG, JPG, WebP, GIF мгновенно. Доступно на 7 языках."
+    },
+    "ko": {
+      "name": "Bidi Converter - 무료 이미지 변환기 및 PDF 뷰어",
+      "short_name": "Bidi Converter",
+      "description": "10개 이상의 형식을 지원하는 무료 온라인 이미지 변환기. PNG, JPG, WebP, GIF를 즉시 변환하세요. 7개 언어로 제공됩니다."
+    }
+  }
+}

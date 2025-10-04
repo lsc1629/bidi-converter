@@ -22,6 +22,13 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+// Landing Pages Específicas
+import PngToJpg from './pages/PngToJpg';
+import JpgToPng from './pages/JpgToPng';
+import PngToWebp from './pages/PngToWebp';
+import WebpToJpg from './pages/WebpToJpg';
+import JpgToWebp from './pages/JpgToWebp';
+import GifToWebp from './pages/GifToWebp';
 import { useAutoRefresh } from './hooks/useAutoRefresh';
 import { useLanguage } from './hooks/useLanguage';
 import { routes } from './utils/routes';
@@ -77,6 +84,14 @@ function App() {
             <Route path="/url-shortener" element={<UrlShortener />} />
             <Route path="/zip-compressor" element={<ZipCompressor />} />
             <Route path="/qr-generator" element={<QrGenerator />} />
+            
+            {/* Landing Pages Específicas - SEO Optimizadas */}
+            <Route path="/png-to-jpg" element={<PngToJpg />} />
+            <Route path="/jpg-to-png" element={<JpgToPng />} />
+            <Route path="/png-to-webp" element={<PngToWebp />} />
+            <Route path="/webp-to-jpg" element={<WebpToJpg />} />
+            <Route path="/jpg-to-webp" element={<JpgToWebp />} />
+            <Route path="/gif-to-webp" element={<GifToWebp />} />
             
             {/* Páginas adicionales - Todos los idiomas */}
             <Route path="/about" element={<About />} />
